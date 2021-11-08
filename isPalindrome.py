@@ -30,7 +30,7 @@ def check(elems):
 #     rev, rev.next, slow = slow, rev, slow.next
 # if fast:
 #     slow = slow.next
-
+#
 # while rev and rev.val == slow.val:
 #     slow, rev = slow.next, rev.next
 # return not rev
