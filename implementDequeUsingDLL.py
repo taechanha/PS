@@ -71,7 +71,7 @@ class MyCircularDeque:
         return self.tail.left.val
 
     def isEmpty(self) -> bool:
-        return self.head.right == self.tail
+        return self.len == 0
 
     def isFull(self) -> bool:
         return self.len == self.k
