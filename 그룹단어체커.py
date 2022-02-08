@@ -1,6 +1,3 @@
-# Why bother doing it? To Improve Problem Solving Skill
-# How are you gonna do that? Pattern Recognition
-# I'm a Pattern Recognizer.
 
 def appear_again(index, ch):
     for i in range(index + 1, len(s)):
