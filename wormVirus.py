@@ -1,5 +1,3 @@
-# [0, 2, 4, 3, 0, 5], after find(1): [0, 0, 0, 3, 0, 5]
-
 def find(x):
     if x == parent[x]:
         return x
@@ -24,16 +22,21 @@ def union(x, y):
         rank[y] += rank[x]
 
 
-n, m = map(int, input().split())
-parent = [x for x in range(1000001)]
-rank = [1 for _ in range(1000001)]
+n = int(input())
+m = int(input())
+
+parent = [x for x in range(n + 1)]
+rank = [1 for _ in range(n + 1)]
 
 for _ in range(m):
-    a, b, c = map(int, input().split())
-    if a == 0:
-        union(b, c)
-    else:
-        if find(b) == find(c):
-            print("YES")
-        else:
-            print("NO")
+    a, b = map(int, input().split())
+    union(a, b)
+
+cnt = 0
+
+for i in range(2, n):
+    if find(i) == 1:
+        cnt += 1
+
+print(cnt)
+print(parent)

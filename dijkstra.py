@@ -64,7 +64,7 @@ def dijkstra(G, start):
     while pq:
         curr_node, curr_dist = heapq.heappop(pq)
         for neighbor_node, neighbor_dist in G[curr_node]:
-            if dist[curr_node] > curr_dist + neighbor_dist:
-                dist[curr_node] = curr_dist + neighbor_dist
-                heapq.heappush(pq, (curr_node, dist[curr_node]))
+            if dist[neighbor_node] > curr_dist + neighbor_dist:
+                dist[neighbor_node] = curr_dist + neighbor_dist
+                heapq.heappush(pq, (neighbor_node, dist[neighbor_node]))
     

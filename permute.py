@@ -12,14 +12,17 @@ def permute(nums: List[int]) -> List[List[int]]:
                 next_elems.remove(e)
 
                 prev_elems.append(e)
-                dfs()
+                dfs(next_elems)
                 prev_elems.pop()
 
     result = []
     prev_elems = []
-    dfs(0, "")
+    dfs(nums)
 
     return result
 
 
 print(permute([1, 2, 3]))
+
+
+
