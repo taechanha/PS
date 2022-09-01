@@ -1,4 +1,0 @@
-def merge():
-    return
-
-

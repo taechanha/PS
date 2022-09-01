@@ -1,0 +1,65 @@
+# 3:13 ~
+
+w, h = map(int, input().split())
+board = [input() for _ in range(h)]
+dr, dc = [-1, 1, 0, 0], [0, 0, -1, 1]
+
+
+def bfs(r, c):
+    global w, h, dr, dc
+    Q = [(r, c, 0, None)]  # (r, c, turns, dir)
+    visited = [[False] * w for _ in range(h)]
+    visited[r][c] = True
+    min_turns = float('inf')
+    while Q:
+        r, c, turns, dir = Q.pop(0)  # deque
+        # print(r, c, turns, dir)
+        # found another C
+        if dir != None and board[r][c] == 'C':
+            print(r, c, turns, dir)
+            visited[r][c] = False
+            min_turns = min(min_turns, turns)
+        for i in range(4):
+            nr = r + dr[i]
+            nc = c + dc[i]
+            if not (0 <= nr < h and 0 <= nc < w):
+                continue
+            if board[nr][nc] == '*':
+                continue
+            if visited[nr][nc]:
+                continue
+
+            # set direction
+            next_dir = None
+            if nr > r:  # down
+                next_dir = 1
+            elif nr < r:  # up
+                next_dir = 0
+            elif nc > c:  # right
+                next_dir = 3
+            elif nc < c:  # left
+                next_dir = 2
+
+            if dir == None:
+                dir = next_dir
+            else:
+                # turned?
+                if dir != next_dir:
+                    turns += 1
+                    dir = next_dir
+
+            Q.append((nr, nc, turns, dir))
+            visited[nr][nc] = True
+
+    return min_turns
+
+
+# find the location of C
+for i, row in enumerate(board):
+    c = row.find('C')
+    if not c == -1:
+        c_at = (i, c)
+        break
+bfs(*c_at)
+min_turns = 1
+print(min_turns)
