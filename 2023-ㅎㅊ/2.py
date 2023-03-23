@@ -17,11 +17,11 @@ def solution(arr, x):
     n = len(arr)
     ans = float('inf')
 
-    for i in range(1, n+1):
+    for i in range(1, 4):
         lst = list(sum(each) for each in list(C(arr, i)))  # nCr
         ans = min(ans, min(e for e in lst if e >= x))
 
-    return ans
+    return -1 if ans == float('inf') else ans
 
 
 x = 140
